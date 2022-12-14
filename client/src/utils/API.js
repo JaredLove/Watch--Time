@@ -27,3 +27,8 @@ export const loginUser = (userData) => {
     body: JSON.stringify(userData),
   });
 };
+
+
+export const searchGoogleBooks = (query) => {
+  return fetch(`https://api.themoviedb.org/3/search/movie?api_key=e62a8500b88c9a431caf5c5d9c7a7674&language=en-US&query=${query}&page=1`);
+};
