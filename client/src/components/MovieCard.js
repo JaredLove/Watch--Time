@@ -2,7 +2,7 @@ import { Modal,Button} from 'react-bootstrap';
 import React, {useState} from 'react';
 const img="https://image.tmdb.org/t/p/w500/";
 
-const MovieBox =({titel, poster_path, vote_average, release_date, overview})=>{
+const MovieBox =({title, poster_path, vote_average, release_date, overview})=>{
     
     const [show, setShow]=useState(false);
 
@@ -14,6 +14,7 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview})=>{
             <div className="card-body">
               <img className="card-img-top" src={img+poster_path} alt="movieimg" style={{width:'200px'}}/>
               <div className="card-body">
+              <h2>{title}</h2>
                   <button type="button" className="btn btn-dark" onClick={handleShow} >View More</button>
                   <Modal show={show} onHide={handleClose}>
                       <Modal.Header closeButton>
@@ -21,11 +22,10 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview})=>{
                       </Modal.Header>
                       <Modal.Body>
                       <img className="card-img-top" style={{width:'10rem'}}src={img+poster_path} alt="movieimg" />
-                      <h3>{titel}</h3>
+                      <h2>{title}</h2>
                       <h4>Rating: {vote_average}</h4>
-                      <h5>Release Date: {release_date}</h5>
-                      <br></br>
-                      <h6>Overview</h6>
+                      <h4>Release Date: {release_date}</h4>
+                      <h3>Overview</h3>
                       <p>{overview}</p>
                       </Modal.Body>
                       <Modal.Footer>

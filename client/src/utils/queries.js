@@ -7,6 +7,13 @@ export const GET_ME = gql`
       _id
       username
       email
+      movieCount {
+        # _id
+        movieId
+        image
+        title
+        overview
+      }
     }
   }
 `;
