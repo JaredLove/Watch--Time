@@ -1,6 +1,11 @@
+
+
+
 import { Modal,Button} from 'react-bootstrap';
 import React, {useState} from 'react';
 const img="https://image.tmdb.org/t/p/w500/";
+
+
 
 const MovieBox =({title, poster_path, vote_average, release_date, overview})=>{
     
