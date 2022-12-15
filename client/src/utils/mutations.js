@@ -19,8 +19,52 @@ mutation addUser($username: String!, $password: String!, $email: String!) {
       _id
       username
       email
+      movieCount
+      savedMovies {
+        movieId
+        image
+        title
+        overview
+      }
     }
     token
   }
 }
 `;
+
+export const SAVE_MOVIE = gql`
+    mutation saveMovie($input: savedMovie!) {
+    saveMovie (input: $input)
+        {
+            _id
+            username
+            email
+            movieCount
+            savedMovies {
+              movieId
+              image
+              title
+              overview
+            }
+        }
+    }
+`;
+
+
+
+export const REMOVE_MOVIE = gql`
+    mutation removeMovie($movieId: ID!) {
+        removeMovie(movieId:$movieId) {
+            _id
+            username
+            email
+            movieCount
+            savedMovies {
+              movieId
+              image
+              title
+              overview
+            }
+        }
+      }
+      `;
