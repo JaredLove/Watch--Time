@@ -2,7 +2,8 @@
   "name": "watchtime",
   "version": "1.0.0",
   "engines": {
-    "node": "16.16.0"
+    "node": "16.x",
+    "npm": "7.x"
   },
   "description": "",
   "main": "index.js",
@@ -11,8 +12,7 @@
     "Prod": "cd server && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm run build"
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
