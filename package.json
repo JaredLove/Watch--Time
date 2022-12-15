@@ -1,9 +1,13 @@
 {
   "homepage": "https://github.com/JaredLove/Watch--Time",
   "name": "watch--time",
-  "version": "1.0.0",
+  "version": "1.0.0",  
+  "engines": {
+        "node": "16.16.0"
+  },
   "description": "",
   "main": "server/server.js",
+
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run Prod || npm run develop",
     "Prod": "cd server && npm start",
