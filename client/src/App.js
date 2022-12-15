@@ -1,47 +1,41 @@
-import React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-
-import SearchBooks from './pages/SearchMovies';
-import SearchActors from './pages/SearchActors'
-
-
+import SearchMovies from "./pages/SearchMovies";
+import SearchActors from "./pages/SearchActors";
 
 const client = new ApolloClient({
-
-  request: operation => {
-    const token = localStorage.getItem('id_token');
+  request: (operation) => {
+    const token = localStorage.getItem("id_token");
 
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
   },
-  uri: '/graphql'
+  uri: "/graphql",
 });
-
-
 
 function App() {
   return (
     <ApolloProvider client={client}>
-        <Router>
-          <>
+      <Router>
+        <>
           <Navbar />
           <Switch>
-          <Route exact path='/movies' component={SearchBooks} />
-          <Route exact path='/actors' component={SearchActors} />
-            <Route render={() => <h1 className='display-2'>Hello World</h1>} />
+            <Route exact path="/home" />
+            <Route exact path="/movies" component={SearchMovies} />
+            <Route exact path="/actors" component={SearchActors} />
+            <Route render={() => <h1 className="display-2">Hello World</h1>} />
           </Switch>
-          </>
-        </Router> 
+        </>
+      </Router>
     </ApolloProvider>
-
   );
 }
 
