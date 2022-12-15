@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/watchtime', {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/watchtime", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
