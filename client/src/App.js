@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import SearchBooks from './pages/SearchMovies';
-import SearchActors from './pages/SearchActors'
+import SearchActors from './pages/SearchActors';
+import SavedMovies from './pages/SavedMovies';
 
 
 
@@ -36,6 +37,7 @@ function App() {
           <Switch>
           <Route exact path='/movies' component={SearchBooks} />
           <Route exact path='/actors' component={SearchActors} />
+          <Route exact path='/savedmovies' component={SavedMovies} />
             <Route render={() => <h1 className='display-2'>Hello World</h1>} />
           </Switch>
           </>
