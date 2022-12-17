@@ -4,8 +4,6 @@ const typeDefs = gql`
 type Movie {
   _id: ID!
   movieId: String
-  actors: [String]
-  # actors: String
   description: String
   title: String
   image: String
@@ -14,13 +12,14 @@ type User {
     _id: ID!
     username: String
     email: String
+    movieCount: Int
+    savedMovies: [Movie]
   }
   input savedMovie {
     description: String
     title: String
     movieId: String
     image: String
-    actors: [String]
 }
 type Query {
     me: User 

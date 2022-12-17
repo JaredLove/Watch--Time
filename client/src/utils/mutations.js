@@ -24,7 +24,7 @@ mutation addUser($username: String!, $password: String!, $email: String!) {
         movieId
         image
         title
-        overview
+        description
       }
     }
     token

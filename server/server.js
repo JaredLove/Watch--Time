@@ -18,14 +18,7 @@ const server = new ApolloServer({
   resolvers,
   context: authMiddleware
 })
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
-  }  
-  
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  });
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
   // Serve up static assets
@@ -36,7 +29,14 @@ const startApolloServer = async (typeDefs, resolvers) => {
   // integrate our Apollo server with the Express application as middleware
   server.applyMiddleware({ app });
   
-
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }  
+  
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
   app.use(routes);
 
   

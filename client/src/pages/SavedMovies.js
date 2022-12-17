@@ -10,7 +10,7 @@ const SavedMovies = () => {
  
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
-console.log(userDataLength); 
+
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -28,6 +28,7 @@ console.log(userDataLength);
 
         const user = await response.json();
         setUserData(user);
+        
       } catch (err) {
         console.error(err);
       }

@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
+const movieSchema = require('./Movie');
 const userSchema = new Schema(
   {
     username: {
@@ -19,9 +19,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-  },
+  
   // set this to use virtual below
-  {
+  savedMovies: [movieSchema],
+},
+// set this to use virtual below
+{ 
     toJSON: {
       virtuals: true,
     },
