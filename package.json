@@ -21,7 +21,7 @@
     "url": "https://github.com/JaredLove/Watch--Time/issues"
   },
   "homepage": "https://github.com/JaredLove/Watch--Time#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^7.6.0"
   }
 }

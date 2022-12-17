@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchBooks from './pages/SearchMovies';
 import SearchActors from './pages/SearchActors';
 import SavedMovies from './pages/SavedMovies';
+import Home from './pages/Home';
 
 
 
@@ -35,10 +36,11 @@ function App() {
           <>
           <Navbar />
           <Switch>
+          <Route exact path='/' component={Home} />
           <Route exact path='/movies' component={SearchBooks} />
           <Route exact path='/actors' component={SearchActors} />
           <Route exact path='/savedmovies' component={SavedMovies} />
-            <Route render={() => <h1 className='display-2'>Hello World</h1>} />
+            <Route render={() => <h1 className='display-2'>How did you get here?</h1>} />
           </Switch>
           </>
         </Router> 
