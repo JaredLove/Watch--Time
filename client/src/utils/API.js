@@ -29,14 +29,14 @@ export const loginUser = (userData) => {
 };
 
 // save movie data for a logged in user
-export const saveMovie = (bookData, token) => {
+export const saveMovie = (movieData, token) => {
   return fetch('/api/users', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(bookData),
+    body: JSON.stringify(movieData),
   });
 };
 
@@ -51,6 +51,6 @@ export const deleteMovie = (movieId, token) => {
 };
 
 
-export const searchGoogleBooks = (query) => {
-  return fetch(`https://api.themoviedb.org/3/search/movie?api_key=e62a8500b88c9a431caf5c5d9c7a7674&language=en-US&query=${query}&page=1`);
+export const searchMovies = (query) => {
+  return fetch(`https://api.themoviedb.org/3/search/movie?api_key=e62a8500b88c9a431caf5c5d9c7a7674&query=${query}`);
 };

@@ -1,59 +1,73 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "../components/MovieCard";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Form, FormControl, Button } from "react-bootstrap";
+import {
+  Jumbotron,
+  Container,
+  Col,
+  Form,
+  Button,
+  Card,
+  CardColumns,
+} from "react-bootstrap";
 
 import Auth from "../utils/auth";
-import { saveMovie } from "../utils/API";
+import { saveMovie, searchMovies } from "../utils/API";
 import { saveMovieIds, getSavedMovieIds } from "../utils/localStorage";
 
-const API_URL =
-  "https://api.themoviedb.org/3/movie/popular?api_key=e62a8500b88c9a431caf5c5d9c7a7674";
-// const API_SEARCH="https://api.themoviedb.org/3/search/movie?api_key=e62a8500b88c9a431caf5c5d9c7a7674&query";
-function SearchMovies() {
-  const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("");
+const SearchMovie = () => {
+  // create state for holding returned google api data
+  const [searchedMovies, setSearchedMovies] = useState([]);
+  // create state for holding our search field data
+  const [searchInput, setSearchInput] = useState("");
 
-  // create state to hold saved movieId values
+  // create state to hold saved MovieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+  // set up useEffect hook to save `savedMovieIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveMovieIds(savedMovieIds);
   });
 
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setMovies(data.results);
-      });
-  }, []);
-
-  const searchMovie = async (event) => {
+  // create method to search for Movies and set state on form submit
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("Searching");
+
+    if (!searchInput) {
+      return false;
+    }
+
     try {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=bcc4ff10c2939665232d75d8bf0ec093&query=${query}`;
-      const res = await fetch(url);
-      const data = await res.json();
+      const response = await searchMovies(searchInput);
+
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
+
+      const data = await response.json();
+
       console.log(data);
-      setMovies(data.results);
-    } catch (e) {
-      console.log(e);
+      const movieData = data.results.map((movie) => ({
+        movieId: movie.id,
+        title: movie.title,
+        description: movie.overview,
+        image: "https://image.tmdb.org/t/p/w500/" + movie.poster_path,
+        release: movie.release_date,
+        vote: movie.vote_average,
+      }));
+
+      setSearchedMovies(movieData);
+      setSearchInput("");
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  const changeHandler = (event) => {
-    setQuery(event.target.value);
-  };
-
-  // create function to handle saving a book to our database
+  // create function to handle saving a Movie to our database
   const handleSaveMovie = async (movieId) => {
-    // find the book in `searchedBooks` state by the matching id
-    const movieToSave = movies.find((movie) => movie.movieId === movieId);
+    // find the Movie in `searchedMovies` state by the matching id
+    const movieToSave = searchedMovies.find(
+      (movie) => movie.movieId === movieId
+    );
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -69,57 +83,83 @@ function SearchMovies() {
         throw new Error("something went wrong!");
       }
 
-      // if book successfully saves to user's account, save book id to state
+      // if Movie successfully saves to user's account, save Movie id to state
       setSavedMovieIds([...savedMovieIds, movieToSave.movieId]);
     } catch (err) {
       console.error(err);
     }
   };
+
   return (
     <>
-      {/* {Auth.loggedIn() && (
+      <Jumbotron fluid className="text-light bg-dark">
+        <Container>
+          <h1>Search for Movies!</h1>
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Row>
+              <Col xs={12} md={8}>
+                <Form.Control
+                  name="searchInput"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type="text"
+                  size="lg"
+                  placeholder="Search for a movie"
+                />
+              </Col>
+              <Col xs={12} md={4}>
+                <Button type="submit" variant="success" size="lg">
+                  Submit Search
+                </Button>
+              </Col>
+            </Form.Row>
+          </Form>
+        </Container>
+      </Jumbotron>
+
+      <Container>
+        <CardColumns>
+          {searchedMovies.map((movie) => {
+            return (
+              <Card key={movie.movieId} border="dark">
+                {movie.image ? (
+                  <Card.Img
+                    src={movie.image}
+                    alt={`The cover for ${movie.title}`}
+                    variant="top"
+                  />
+                ) : null}
+                <Card.Body>
+                  <Card.Title>{movie.title}</Card.Title>
+                  <Card.Text>
+                    Description:
+                    {movie.description}
+                  </Card.Text>
+                  <Card.Text>Release: {movie.release}</Card.Text>
+                  <Card.Text>Rating: {movie.vote}</Card.Text>
+                  {Auth.loggedIn() && (
                     <Button
-                      disabled={savedMovieIds?.some((savedMovieId) => savedMovieId === movies.movieId)}
-                      className='btn-block btn-info'
-                      onClick={() => handleSaveMovie(movies.movieId)}>
-                      {savedMovieIds?.some((savedMovieId) => savedMovieId === movies.movieId)
-                        ? 'This movie has already been saved!'
-                        : 'Save this movie!'}
+                      disabled={savedMovieIds?.some(
+                        (savedMovieId) => savedMovieId === movie.movieId
+                      )}
+                      className="btn-block btn-info"
+                      onClick={() => handleSaveMovie(movie.movieId)}
+                    >
+                      {savedMovieIds?.some(
+                        (savedMovieId) => savedMovieId === movie.movieId
+                      )
+                        ? "This movie has already been saved!"
+                        : "Save this Movie!"}
                     </Button>
                   )}
-   */}
-      <Container fluid>
-        <Form className="d-flex" onSubmit={searchMovie} autoComplete="off">
-          <FormControl
-            type="search"
-            placeholder="Movie Search"
-            className="me-2"
-            aria-label="search"
-            name="query"
-            value={query}
-            onChange={changeHandler}
-          ></FormControl>
-          <Button variant="secondary" type="submit">
-            Search
-          </Button>
-        </Form>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
       </Container>
-
-      <div>
-        {movies.length > 0 ? (
-          <div className="container">
-            <div className="grid">
-              {movies.map((movieReq) => (
-                <MovieCard key={movieReq.id} {...movieReq} />
-              ))}
-            </div>
-          </div>
-        ) : (
-          <h2>No movies found with that name!</h2>
-        )}
-      </div>
     </>
   );
-}
+};
 
-export default SearchMovies;
+export default SearchMovie;

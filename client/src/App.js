@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import SearchMovies from "./pages/SearchMovies";
+import SearchBooks from "./pages/SearchMovies";
 import SearchActors from "./pages/SearchActors";
+import SavedMovies from "./pages/SavedMovies";
+import Home from "./pages/Home";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -28,10 +30,15 @@ function App() {
         <>
           <Navbar />
           <Switch>
-            <Route exact path="/home" />
-            <Route exact path="/movies" component={SearchMovies} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/movies" component={SearchBooks} />
             <Route exact path="/actors" component={SearchActors} />
-            <Route render={() => <h1 className="display-2">Hello World</h1>} />
+            <Route exact path="/savedmovies" component={SavedMovies} />
+            <Route
+              render={() => (
+                <h1 className="display-2">How did you get here?</h1>
+              )}
+            />
           </Switch>
         </>
       </Router>

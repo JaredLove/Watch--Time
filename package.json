@@ -1,10 +1,6 @@
 {
   "name": "watchtime",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.x",
-    "npm": "7.x"
-  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,7 +21,7 @@
     "url": "https://github.com/JaredLove/Watch--Time/issues"
   },
   "homepage": "https://github.com/JaredLove/Watch--Time#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^7.6.0"
   }
 }

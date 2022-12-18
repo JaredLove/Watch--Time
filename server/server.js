@@ -21,6 +21,14 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+  // Serve up static assets
+
+  
+const startApolloServer = async (typeDefs, resolvers) => {
+  await server.start();
+  // integrate our Apollo server with the Express application as middleware
+  server.applyMiddleware({ app });
+  
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
   }  
@@ -29,14 +37,6 @@ app.use(express.json());
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
-  
-const startApolloServer = async (typeDefs, resolvers) => {
-  await server.start();
-  // integrate our Apollo server with the Express application as middleware
-  server.applyMiddleware({ app });
-  
-  // Serve up static assets
-
   app.use(routes);
 
   

@@ -7,12 +7,13 @@ export const GET_ME = gql`
       _id
       username
       email
-      movieCount {
+      movieCount
+      savedMovies {
         # _id
         movieId
         image
         title
-        overview
+        description
       }
     }
   }

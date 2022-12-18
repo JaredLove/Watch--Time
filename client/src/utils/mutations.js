@@ -24,7 +24,7 @@ mutation addUser($username: String!, $password: String!, $email: String!) {
         movieId
         image
         title
-        overview
+        description
       }
     }
     token
@@ -44,7 +44,7 @@ export const SAVE_MOVIE = gql`
               movieId
               image
               title
-              overview
+              description
             }
         }
     }
@@ -63,7 +63,7 @@ export const REMOVE_MOVIE = gql`
               movieId
               image
               title
-              overview
+              description
             }
         }
       }
