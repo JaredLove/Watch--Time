@@ -13,7 +13,7 @@ import Auth from "../utils/auth";
 import { saveMovie, searchMovies } from "../utils/API";
 import { saveMovieIds, getSavedMovieIds } from "../utils/localStorage";
 
-const SearchMovie = () => {
+const SearchMovies = () => {
   // create state for holding returned google api data
   const [searchedMovies, setSearchedMovies] = useState([]);
   // create state for holding our search field data
@@ -162,4 +162,4 @@ const SearchMovie = () => {
   );
 };
 
-export default SearchMovie;
+export default SearchMovies;

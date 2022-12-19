@@ -5,10 +5,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import SearchBooks from "./pages/SearchMovies";
+import SearchMovies from "./pages/SearchMovies";
 import SearchActors from "./pages/SearchActors";
 import SavedMovies from "./pages/SavedMovies";
 import Home from "./pages/Home";
+import Splash from "./pages/Splash";
+import Footer from "./pages/Footer";
+
+// If user not logged in, displays generic splash page and to login or signup or possibly browse other's lists
+import Auth from "./utils/auth";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -23,6 +28,8 @@ const client = new ApolloClient({
   uri: "/graphql",
 });
 
+const loggedIn = Auth.loggedIn();
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -30,8 +37,12 @@ function App() {
         <>
           <Navbar />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/movies" component={SearchBooks} />
+            {loggedIn ? (
+              <Route exact path="/" component={Home} />
+            ) : (
+              <Route exact path="/" component={Splash} />
+            )}
+            <Route exact path="/movies" component={SearchMovies} />
             <Route exact path="/actors" component={SearchActors} />
             <Route exact path="/savedmovies" component={SavedMovies} />
             <Route
@@ -40,6 +51,7 @@ function App() {
               )}
             />
           </Switch>
+          <Footer />
         </>
       </Router>
     </ApolloProvider>

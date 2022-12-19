@@ -12,10 +12,10 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar id="navbar" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand as={Link} to="/">
-            watchtime
+          <Navbar.Brand className="navbarBrand " as={Link} to="/">
+            <h4>watchtime</h4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar">

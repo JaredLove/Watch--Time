@@ -1,5 +1,34 @@
+:root {
+  /* color pallete 1 */
+  --bg-color-primary: #0b090aff;
+  --bg-color-secondary: #ffce00;
+  --text-primary: #f5f3f4;
+  --primary: #a4161aff;
+  --secondary: #a4161a;
+  --tertiary: #b2c2c1;
+  --quatrinary: #cadbda;
+  --light: #e1f5f4;
+  --dark: #6c7575;
+  --error: rgb(228, 46, 1);
+
+  /* coolers url and original names
+  https://coolors.co/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff */
+  --rich-black-fogra-39: #0b090aff;
+  --eerie-black: #161a1dff;
+  --blood-red: #660708ff;
+  --ruby-red: #a4161aff;
+  --carnelian: #ba181bff;
+  --imperial-red: #e5383bff;
+  --black-shadows: #b1a7a6ff;
+  --light-gray: #d3d3d3ff;
+  --cultured: #f5f3f4ff;
+  --white: #ffffffff;
+}
+
 body {
   font-family: "Rubik", sans-serif;
+  background-color: var(--bg-color-primary);
+  color: var(--text-primary);
 }
 
 h1,
@@ -14,4 +43,115 @@ h6 {
 .small {
   font-weight: 300;
   font-style: italic;
+}
+
+/*  --- COLORS --- */
+.navbar,
+.navbar-light .navbar-brand {
+  background-color: var(--bg-color-primary);
+  color: var(--text-primary);
+}
+
+/* SPLASH PAGE JUMBOTRON */
+/* --- START --- */
+#jumbo-container {
+  position: relative;
+}
+
+.jumbo {
+  display: flex;
+  justify-content: center;
+  padding: 35vh 0 0 0;
+  margin: auto;
+  position: absolute;
+  left: 40%;
+  /* top: -5px; */
+}
+
+.jumbo-content {
+  display: block;
+  font-size: 1.25rem;
+}
+
+.jumbo-center {
+  justify-content: center;
+}
+
+/* --- START --- */
+/* SPLASH PAGE JUMBOTRON */
+
+/* BACKGROUND SLIDESHOW CSS */
+/* --- START --- */
+.back-full-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.back-container {
+  overflow: hidden;
+  /* The image height times 3 */
+  /* height: 84vh; */
+}
+
+.sliding-background-up {
+  background: repeat-y;
+  background-size: auto;
+  opacity: 0.2;
+  height: 11013px; /* The image height times 3 */
+  max-width: 344px;
+  min-width: 344px;
+  animation: bgSlideUp 60s linear infinite;
+}
+
+.sliding-background-down {
+  background: repeat-y;
+  background-size: auto;
+  opacity: 0.2;
+  height: 11013px; /* The image height times 3 */
+  max-width: 344px;
+  min-width: 344px;
+  animation: bgSlideDown 60s linear infinite;
+}
+
+.sliding-background-down:hover {
+  opacity: 1;
+}
+
+.sliding-background-up:hover {
+  opacity: 1;
+}
+
+@keyframes bgSlideUp {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -3671px, 0); /* The image height */
+  }
+}
+
+@keyframes bgSlideDown {
+  0% {
+    transform: translate3d(0, -3671px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0); /* The image height */
+  }
+}
+
+/* ---  END  --- */
+/* BACKGROUND SLIDESHOW CSS */
+
+#footer {
+  background-color: transparent;
+}
+
+#navbar {
+  min-height: 8vh;
+}
+#splash {
+  max-height: 80vh;
+}
+#footer {
+  min-height: 8vh;
 }
