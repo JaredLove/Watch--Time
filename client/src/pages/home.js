@@ -1,16 +1,11 @@
-import React from "react";
-
-import Container from "react-bootstrap/Container";
-// import Col from "react-bootstrap/Col";
-// import Row from "react-bootstrap/Row";
+import React from 'react';
 
 function Home() {
-  return (
-    <Container>
-      <div>
-        <h1>Homepage</h1>
-      </div>
-    </Container>
-  );
+return (
+
+    <div>
+    <h1>Homepage</h1>
+    </div>
+);
 }
 export default Home;
