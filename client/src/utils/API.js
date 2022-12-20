@@ -28,7 +28,7 @@ export const loginUser = (userData) => {
   });
 };
 
-// save movie data for a logged in user
+// save book data for a logged in user
 export const saveMovie = (movieData, token) => {
   return fetch('/api/users', {
     method: 'PUT',
@@ -40,16 +40,15 @@ export const saveMovie = (movieData, token) => {
   });
 };
 
-// remove saved movie data for a logged in user
+// remove saved book data for a logged in user
 export const deleteMovie = (movieId, token) => {
-  return fetch(`/api/users/movies/${movieId}`, {
+  return fetch(`/api/users/books/${movieId}`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,
     },
   });
 };
-
 
 export const searchMovies = (query) => {
   return fetch(`https://api.themoviedb.org/3/search/movie?api_key=e62a8500b88c9a431caf5c5d9c7a7674&query=${query}`);

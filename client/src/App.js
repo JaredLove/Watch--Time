@@ -1,8 +1,8 @@
 import React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 import Navbar from './components/Navbar';
@@ -10,21 +10,26 @@ import SearchMovies from './pages/SearchMovies';
 import SearchActors from './pages/SearchActors';
 import SavedMovies from './pages/SavedMovies';
 import Home from './pages/Home';
+import Trailer from './pages/Trailer/Trailer';
 
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-
-  request: operation => {
-    const token = localStorage.getItem('id_token');
-
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
-  },
-  uri: '/graphql'
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 
@@ -39,7 +44,9 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/movies' component={SearchMovies} />
           <Route exact path='/actors' component={SearchActors} />
+           <Route exact path='/trailers' component={Trailer} /> 
           <Route exact path='/savedmovies' component={SavedMovies} />
+
             <Route render={() => <h1 className='display-2'>How did you get here?</h1>} />
           </Switch>
           </>

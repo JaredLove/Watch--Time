@@ -35,10 +35,10 @@ const SearchMovie = () => {
         throw new Error('something went wrong!');
       }
       
-      const  data   = await response.json();
+      const  { results }   = await response.json();
 
-      console.log(data);
-      const movieData = data.results.map((movie) => ({
+      
+      const movieData = results.map((movie) => ({
         movieId: movie.id,
         title: movie.title,
         description: movie.overview,

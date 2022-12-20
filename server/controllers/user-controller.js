@@ -42,7 +42,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // save a movie to a user's `savedMovies` field by adding it to the set (to prevent duplicates)
+  // save a movie to a user's `savedmovies` field by adding it to the set (to prevent duplicates)
   // user comes from `req.user` created in the auth middleware function
   async saveMovie({ user, body }, res) {
     console.log(user);
@@ -58,7 +58,7 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
-  // remove a movie from `savedMovies`
+  // remove a movie from `savedmovies`
   async deleteMovie({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
