@@ -28,7 +28,7 @@ const SavedMovies = () => {
 
         const user = await response.json();
         setUserData(user);
-        
+        console.log(user);
       } catch (err) {
         console.error(err);
       }
@@ -60,17 +60,18 @@ const SavedMovies = () => {
       console.error(err);
     }
   };
-
+console.log("hi");
   // if data isn't here yet, say so
   if (!userDataLength) {
     return <h2>LOADING...</h2>;
   }
-
+  
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
           <h1>Viewing saved movies!</h1>
+          
         </Container>
       </Jumbotron>
       <Container>
@@ -81,6 +82,7 @@ const SavedMovies = () => {
         </h2>
         <CardColumns>
           {userData.savedMovies.map((movie) => {
+            
             return (
               <Card key={movie.movieId} border='dark'>
                 {movie.image ? <Card.Img src={movie.image} alt={`The cover for ${movie.title}`} variant='top' /> : null}

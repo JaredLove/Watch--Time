@@ -40,9 +40,9 @@ export const saveMovie = (movieData, token) => {
   });
 };
 
-// remove saved book data for a logged in user
+// remove saved movie data for a logged in user
 export const deleteMovie = (movieId, token) => {
-  return fetch(`/api/users/books/${movieId}`, {
+  return fetch(`/api/users/movies/${movieId}`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,
