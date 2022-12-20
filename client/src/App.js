@@ -1,7 +1,7 @@
 import React from "react";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from "./components/Navbar";
@@ -35,25 +35,25 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
+        <div className="page-body">
           <Navbar />
-          <Switch>
-            {!loggedIn ? (
-              <Route exact path="/home" component={Home} />
+          <Routes>
+            {loggedIn ? (
+              <Route exact path="/" elements={<Home />} />
             ) : (
-              <Route exact path="/" component={Splash} />
+              <Route exact path="/" elements={<Splash />} />
             )}
-            <Route exact path="/movies" component={SearchMovies} />
-            <Route exact path="/actors" component={SearchActors} />
-            <Route exact path="/savedmovies" component={SavedMovies} />
+            <Route exact path="/movies" elements={<SearchMovies />} />
+            <Route exact path="/actors" elements={<SearchActors />} />
+            <Route exact path="/savedmovies" elements={<SavedMovies />} />
             <Route
               render={() => (
                 <h1 className="display-2">How did you get here?</h1>
               )}
             />
-          </Switch>
+          </Routes>
           <Footer />
-        </>
+        </div>
       </Router>
     </ApolloProvider>
   );
