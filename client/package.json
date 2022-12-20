@@ -14,7 +14,7 @@
     "concurrently": "^7.6.0",
     "graphql": "^15.8.0",
     "graphql-tag": "^2.12.6",
-    "jwt-decode": "^2.2.0",
+    "jwt-decode": "^3.1.2",
     "react": "^16.13.1",
     "react-axios": "^2.0.6",
     "react-bootstrap": "^1.0.1",
@@ -44,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jwt-decode": "^3.1.0"
   }
 }
