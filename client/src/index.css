@@ -1,10 +1,9 @@
 :root {
   /* color pallete 1 */
   --bg-color-primary: #0b090aff;
-  --bg-color-secondary: #ffce00;
+  --bg-color-secondary: #161a1dff;
   --text-primary: #f5f3f4;
-  --primary: #a4161aff;
-  --secondary: #a4161a;
+  --text-secondary: #161a1dff;
   --tertiary: #b2c2c1;
   --quatrinary: #cadbda;
   --light: #e1f5f4;
@@ -100,7 +99,7 @@ h6 {
   height: 11013px; /* The image height times 3 */
   max-width: 250px;
   min-width: 250px;
-  animation: bgSlideUp 60s linear infinite;
+  animation: bgSlideUp 120s linear infinite;
 }
 
 .sliding-background-down {
@@ -110,7 +109,7 @@ h6 {
   height: 11013px; /* The image height times 3 */
   max-width: 250px;
   min-width: 250px;
-  animation: bgSlideDown 60s linear infinite;
+  animation: bgSlideDown 120s linear infinite;
 }
 
 .sliding-background-down:hover {
@@ -141,6 +140,14 @@ h6 {
 
 /* ---  END  --- */
 /* BACKGROUND SLIDESHOW CSS */
+
+/* MODAL */
+.modal-content {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-primary);
+}
+
+/* END MODAL */
 
 #footer {
   background-color: transparent;

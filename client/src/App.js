@@ -2,13 +2,14 @@ import React from "react";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 import SearchMovies from "./pages/SearchMovies";
 import SearchActors from "./pages/SearchActors";
 import SavedMovies from "./pages/SavedMovies";
-import Home from "./pages/Home";
 import Splash from "./pages/Splash";
 import Footer from "./pages/Footer";
 
@@ -37,8 +38,8 @@ function App() {
         <>
           <Navbar />
           <Switch>
-            {loggedIn ? (
-              <Route exact path="/" component={Home} />
+            {!loggedIn ? (
+              <Route exact path="/home" component={Home} />
             ) : (
               <Route exact path="/" component={Splash} />
             )}
