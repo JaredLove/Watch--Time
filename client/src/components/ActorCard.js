@@ -25,7 +25,6 @@ const MovieBox =({name, poster_path, profile_path, popularity, known_for, known_
                       <h3>{name}</h3>
                       <h4>Popularity: {popularity}</h4>
                       <h4>Department: {known_for_department}</h4>
-                      <h4>Known For: {known_for.title || known_for.original_title}</h4>
                       </Modal.Body>
                       <Modal.Footer>
                           <Button variant="secondary" onClick={handleClose}>Close</Button>
