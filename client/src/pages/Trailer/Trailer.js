@@ -135,7 +135,7 @@ function Test() {
                         {renderMovies()}
                     </div>
                 </main>
-                : 'Sorry, no movies found'}
+                : 'Search for a movie'}
         </div>
     );
 }
