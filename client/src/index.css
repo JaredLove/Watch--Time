@@ -44,7 +44,18 @@ h6 {
   font-style: italic;
 }
 
-/*  --- COLORS --- */
+/* --- UTILITY --- */
+.text-bold {
+  font-weight: bold;
+}
+
+.ul-style-none {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 0.85rem;
+}
+
+/*  --- NAVBAR --- */
 .navbar,
 .navbar-light .navbar-brand {
   background-color: var(--bg-color-primary);
