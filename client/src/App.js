@@ -52,7 +52,7 @@ function App() {
         <div className="page-body" data-theme={userTheme}>
           <Navbar userTheme={userTheme} setUserTheme={setUserTheme} />
           <Switch>
-            {!loggedIn ? (
+            {loggedIn ? (
               <Route exact path="/" component={Home} />
             ) : (
               <Route exact path="/" component={Splash} />
