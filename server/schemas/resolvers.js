@@ -8,7 +8,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
+          "-__v -password".populate("savedMovies")
         );
         console.log(userData);
 
@@ -16,6 +16,15 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+
+    users: async () => {
+      return User.find().select("-__v -password").populate("savedMovies");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select("-__v -password")
+        .populate("savedMovies");
     },
   },
 
@@ -51,7 +60,7 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { savedMovies: args.movie } },
           { new: true }
-        );
+        ).populate("savedMovies");
         return updatedUser;
       }
       throw new AuthenticationError("You need to be logged in!");

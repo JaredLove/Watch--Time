@@ -20,6 +20,13 @@ const movieSchema = new Schema({
     type: String,
     required: true,
   },
-});
+  
+},
+{
+    toJSON: {
+      getters: true
+    }
+  },
+);
 
 module.exports = movieSchema;

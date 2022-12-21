@@ -14,7 +14,7 @@ import { saveMovie, searchMovies } from "../utils/API";
 import { saveMovieIds, getSavedMovieIds } from "../utils/localStorage";
 
 const SearchMovies = () => {
-  // create state for holding returned google api data
+  // create state for holding returned movie api data
   const [searchedMovies, setSearchedMovies] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState("");

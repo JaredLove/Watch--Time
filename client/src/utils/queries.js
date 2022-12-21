@@ -10,9 +10,26 @@ export const GET_ME = gql`
       movieCount
       savedMovies {
         movieId
-        image
         description
-        title
+        title  
+        image
+      }
+    }
+  }
+`;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      movieCount
+      savedMovies {
+        movieId
+        description
+        title  
+        image
       }
     }
   }

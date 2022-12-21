@@ -12,9 +12,11 @@ export const LOGIN_USER = gql`
         movieCount
         savedMovies {
         movieId
-        image
-        title
         description
+        title
+        image
+        
+        
       }
       }
     }
@@ -32,15 +34,17 @@ export const ADD_USER = gql`
         movieCount
         savedMovies {
         movieId
-        image
-        title
         description
+        title 
+        image
+        
+        
       }
       }
     }
   }
 `;
-// query to save the book
+// query to save the movie
 export const SAVE_MOVIE = gql`
   mutation SaveMovie($movie: MovieInput) {
     saveMovie(movie: $movie) {
@@ -50,15 +54,17 @@ export const SAVE_MOVIE = gql`
       movieCount
       savedMovies {
         movieId
-        image
-        title
         description
+        title
+        image
+        
+        
       }
     }
   }
 `;
 
-// query for remove book from saved
+// query for remove movie from saved
 export const REMOVE_MOVIE = gql`
   mutation removeMovie($movieId: String!) {
     removeMovie(movieId: $movieId) {
@@ -67,10 +73,12 @@ export const REMOVE_MOVIE = gql`
       email
       movieCount
       savedMovies {
-        movieId
-        image
-        title
+        movieId 
         description
+        title
+        image
+        
+       
       }
     }
   }

@@ -2,7 +2,7 @@ import { Modal,Button} from 'react-bootstrap';
 import React, {useState} from 'react';
 const img="https://image.tmdb.org/t/p/w500/";
 
-const MovieBox =({name, poster_path, profile_path, popularity, known_for})=>{
+const MovieBox =({name, poster_path, profile_path, popularity, known_for, known_for_department})=>{
     
     const [show, setShow]=useState(false);
 
@@ -24,7 +24,7 @@ const MovieBox =({name, poster_path, profile_path, popularity, known_for})=>{
                       <img className="card-img-top" style={{width:'14rem'}}src={img+profile_path} alt="actorimg" />
                       <h3>{name}</h3>
                       <h4>Popularity: {popularity}</h4>
-                      <h4>Known For: {known_for[0].name || known_for.original_title}</h4>
+                      <h4>Department: {known_for_department}</h4>
                       </Modal.Body>
                       <Modal.Footer>
                           <Button variant="secondary" onClick={handleClose}>Close</Button>
