@@ -11,7 +11,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_MOVIE } from '../utils/mutations';
 
-// import { getMe, deleteBook } from '../utils/API';
+
 import Auth from '../utils/auth';
 import { removeMovieId } from '../utils/localStorage';
 
@@ -20,7 +20,7 @@ const SavedMovies = () => {
   const [removeMovie, { error }] = useMutation(REMOVE_MOVIE);
   const userData = data?.me || {};
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+  // create function that accepts the movie's mongo _id value as param and deletes the movie from the database
   const handleDeleteMovie = async (movieId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -33,7 +33,7 @@ const SavedMovies = () => {
         variables: { movieId: movieId },
       });
 
-      // upon success, remove book's id from localStorage
+      // upon success, remove movie's id from localStorage
       removeMovieId(movieId);
     } catch (err) {
       console.error(err);
