@@ -159,10 +159,17 @@ h6 {
 
 /* OVERRIDE BOOTSTRAP */
 #navbar-container {
-  /* background-color: transparent; */
   background-color: var(--bg-color-primary-50);
   min-height: 10vh;
   /* box-shadow: 0px 20px 15px 10px rgba(255, 255, 255, 1); */
+}
+
+#navbar-container .dropdown-menu {
+  background-color: var(--bg-color-primary);
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgb(67, 67, 67);
 }
 
 #navbar-container .nav-link,
@@ -170,25 +177,50 @@ h6 {
   color: rgba(255, 255, 255, 1);
 }
 
-#navbar-container .container a:hover {
+#navbar-container a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dropdown-item:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: var(--bg-color-primary);
+}
+#nav-list-title {
+  font-weight: bold;
+}
+
+#navbar-container .navbar-nav .navhover:hover {
   background-color: var(--bg-color-primary-70);
   border-radius: 8px;
 }
 
+#navbar-container a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* list group header */
+.list-group-item.disabled,
+.list-group-item:disabled {
+  color: #ffffff;
+  pointer-events: none;
+  background-color: rgb(0, 0, 0);
+}
+
 .list-group {
-  background-color: var(--bg-color-primary);
+  background-color: var(--bg-color-list);
   width: 100%;
 }
 
 .list-group-item {
-  background-color: var(--bg-color-primary);
+  background-color: var(--bg-color-list);
   border: 1px solid rgba(0, 0, 0, 0.125);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .list-group-item.active {
   background-color: var(--bg-color-button-selected);
-  border-color: white;
-  border-width: 3px 3px 3px 3px;
+
+  border-style: none;
 }
 
 #footer {

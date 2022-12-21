@@ -9,12 +9,12 @@ import SavedMovies from "./SavedMovies";
 
 // import { GET_ME } from "../utils/queries";
 
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 const userData = {
   defaultListId: {
-    movieListId: 45687,
-    listName: "Kid friendly list",
+    movieListId: 654,
+    listName: "Feel good movies",
   },
   movieLists: [
     {
@@ -23,7 +23,7 @@ const userData = {
     },
     {
       _id: 876,
-      listName: "Movies with Trains and coin collecting adventures",
+      listName: "Movies with Trains",
     },
     {
       _id: 654,
@@ -83,21 +83,18 @@ function Home() {
     }
   };
 
-  console.log("2 - ", Auth.AuthService);
   return (
     <Container>
+      <Row>
+        <Container fluid>TRAILER</Container>
+      </Row>
+
       <Row>
         <Col md={2}>
           <Row className="pt-2 pb-4">
             {/* <div className="fs-5 text-bold">Your Movie Lists:</div> */}
-            <ListGroup
-              defaultActiveKey={userData.defaultListId.movieListId}
-              variant="flush"
-            >
-              <ListGroup.Item
-                disabled
-                className="px-2 font-weight-bold text-dark"
-              >
+            <ListGroup defaultActiveKey={userData.defaultListId.movieListId}>
+              <ListGroup.Item disabled className="px-2 font-weight-bold">
                 Your Movie Lists:
               </ListGroup.Item>
               {userData.movieLists.length &&
