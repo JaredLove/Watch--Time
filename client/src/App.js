@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ApolloProvider,
   ApolloClient,
@@ -7,6 +7,8 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import useLocalStorage from "use-local-storage";
 
 import Navbar from "./components/Navbar";
 import SearchMovies from "./pages/SearchMovies";
@@ -42,20 +44,15 @@ const client = new ApolloClient({
 const loggedIn = Auth.loggedIn();
 
 function App() {
-  const [userTheme, setUserTheme] = useState(
-    localStorage.getItem("userTheme")
-      ? localStorage.getItem("userTheme")
-      : "default"
-  );
-  // const [userTheme, setUserTheme] = useState("default");
+  const [userTheme, setUserTheme] = useLocalStorage("userTheme", "default");
 
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="page-body">
+        <div className="page-body" data-theme={userTheme}>
           <Navbar userTheme={userTheme} setUserTheme={setUserTheme} />
           <Switch>
-            {loggedIn ? (
+            {!loggedIn ? (
               <Route exact path="/" component={Home} />
             ) : (
               <Route exact path="/" component={Splash} />

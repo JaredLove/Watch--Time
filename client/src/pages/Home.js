@@ -13,8 +13,8 @@ import SavedMovies from "./SavedMovies";
 
 const userData = {
   defaultListId: {
-    movieListId: 654,
-    listName: "Feel good movies",
+    movieListId: 45687,
+    listName: "Kid friendly list",
   },
   movieLists: [
     {
@@ -23,7 +23,7 @@ const userData = {
     },
     {
       _id: 876,
-      listName: "Movies with Trains",
+      listName: "Movies with Trains and coin collecting adventures",
     },
     {
       _id: 654,

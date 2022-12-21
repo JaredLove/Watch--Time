@@ -16,7 +16,7 @@ const AppNavbar = () => {
   return (
     <>
       {/* {userTheme && require(`../assets/css/themes/${userTheme}.css`)} */}
-      <Navbar id="navbar" variant="dark" expand="lg">
+      <Navbar id="navbar-container" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand className="navbarBrand " as={Link} to="/">
             <h3>WATCHTIME</h3>
