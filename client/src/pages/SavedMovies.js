@@ -6,7 +6,7 @@ import {
   Card,
   Button,
 } from 'react-bootstrap';
-
+// imports
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_MOVIE } from '../utils/mutations';
@@ -14,11 +14,12 @@ import { REMOVE_MOVIE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 import { removeMovieId } from '../utils/localStorage';
-
+  //function to call saved movies
 const SavedMovies = () => {
   const { loading, data } = useQuery(GET_ME);
   const [removeMovie, { error }] = useMutation(REMOVE_MOVIE);
   const userData = data?.me || {};
+  console.log(userData);
 
   // create function that accepts the movie's mongo _id value as param and deletes the movie from the database
   const handleDeleteMovie = async (movieId) => {

@@ -6,19 +6,22 @@ import Youtube from 'react-youtube'
 import './test.css'
 
 function Test() {
+    // api calls
     const api = "https://api.themoviedb.org/3/"
     const searchInput = api + "search/movie"
     const discover = api + "discover/movie"
     const API_KEY = "e62a8500b88c9a431caf5c5d9c7a7674"
     const BACKDROP_PATH = "https://image.tmdb.org/t/p/w1280"
 
+    //usestate varaibles 
     const [playing, setPlaying] = useState(false)
     const [trailer, setTrailer] = useState(null)
     const [movies, setMovies] = useState([])
     const [searchKey, setSearchKey] = useState("")
     const [movie, setMovie] = useState({title: "Loading Movies"})
 
- 
+
+    // pre load data so trailer page doesnt load blank
     useEffect(() => {
         fetchMovies()
     }, [])
@@ -26,7 +29,7 @@ function Test() {
         if (event) {
             event.preventDefault()
         }
-
+            
         const {data} = await axios.get(`${searchKey ? searchInput : discover}`, {
             params: {
                 api_key: API_KEY,
@@ -35,6 +38,7 @@ function Test() {
         })
 
         console.log(data.results[0])
+        // set the data results of the api call
         setMovies(data.results)
         setMovie(data.results[0])
 
@@ -42,7 +46,7 @@ function Test() {
             await fetchMovie(data.results[0].id)
         }
     }
-
+            //fetching the id of a movie to display
     const fetchMovie = async (id) => {
         const {data} = await axios.get(`${api}movie/${id}`, {
             params: {
@@ -50,7 +54,7 @@ function Test() {
                 append_to_response: "videos"
             }
         })
-
+                //
         if (data.videos && data.videos.results) {
             const trailer = data.videos.results.find(vid => vid.name === "Official Trailer")
             setTrailer(trailer ? trailer : data.videos.results[0])
@@ -76,7 +80,7 @@ function Test() {
             />
         ))
     )
-
+                //return data
     return (
         <div className="App">
             <header className="center-max-size header">

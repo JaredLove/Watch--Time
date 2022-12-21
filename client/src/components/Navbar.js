@@ -6,11 +6,16 @@ import LoginForm from "./LoginForm";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFilm } from "@fortawesome/free-solid-svg-icons";
-
+// import { GET_ME } from '../utils/queries';
 import Auth from "../utils/auth";
-
+// import { useQuery } from '@apollo/client';
 const AppNavbar = () => {
+
+  // const { data } = useQuery(GET_ME);
+  // const userData = data?.me || {};
+  // console.log(userData);
   // set modal display state
+
   const [showModal, setShowModal] = useState(false);
 
   return (
