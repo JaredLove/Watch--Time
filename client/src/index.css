@@ -1,18 +1,34 @@
 :root {
-  /* color pallete 1 */
-  --bg-color-primary: #161a1d;
-  --bg-color-secondary: #660708ff;
+  /* color pallete 1 - crimson */
+  /* --bg-color-primary: #161a1d;
+  --bg-color-secondary: rgba(102, 7, 9, 0.7);
+  --bg-color-button: #b1a7a6ff;
+  --bg-color-button-selected: rgba(102, 7, 9, 0.7);
+  --bg-color-button-highlighted: rgba(102, 7, 9, 0.7);
   --text-primary: #f5f3f4;
-  --text-secondary: #161a1dff;
-  --tertiary: #b2c2c1;
-  --quatrinary: #cadbda;
-  --light: #e1f5f4;
-  --dark: #6c7575;
-  --error: rgb(228, 46, 1);
+  --text-secondary: #161a1dff; */
+
+  /* color pallete 2 - neon pink */
+  /* --bg-color-primary: #161a1d;
+  --bg-color-secondary: rgba(255, 158, 241, 0.9);
+  --text-primary: #f5f3f4;
+  --text-secondary: #161a1dff; */
+
+  /* color pallete 3 - neon purple */
+  /* --bg-color-primary: #161a1d;
+  --bg-color-secondary: rgba(128, 70, 255, 0.7);
+  --text-primary: #f5f3f4;
+  --text-secondary: #161a1dff; */
+
+  /* color pallete 4 - neon blue */
+  /* --bg-color-primary: #161a1d;
+  --bg-color-secondary: rgba(48, 127, 255, 0.7);
+  --text-primary: #f5f3f4;
+  --text-secondary: #161a1dff; */
 
   /* coolers url and original names
   https://coolors.co/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff */
-  --rich-black-fogra-39: #0b090aff;
+  /* --rich-black-fogra-39: #0b090aff;
   --eerie-black: #161a1dff;
   --blood-red: #660708ff;
   --ruby-red: #a4161aff;
@@ -21,7 +37,7 @@
   --black-shadows: #b1a7a6ff;
   --light-gray: #d3d3d3ff;
   --cultured: #f5f3f4ff;
-  --white: #ffffffff;
+  --white: #ffffffff; */
 }
 
 body {
@@ -40,9 +56,9 @@ h6 {
 }
 
 .page-body {
-  opacity: 0.5;
+  /* opacity: 0.5; */
   background-image: linear-gradient(
-    to bottom right,
+    90deg,
     var(--bg-color-primary),
     var(--bg-color-secondary)
   );
@@ -78,6 +94,7 @@ h6 {
 }
 
 .jumbo-positioner {
+  pointer-events: none;
   position: absolute;
   width: 100%;
   height: 80%;
@@ -94,13 +111,17 @@ h6 {
 .jumbo-content {
   display: block;
   font-size: 1.25rem;
+  text-shadow: 0px 0px 30px var(--bg-color-secondary);
 }
-
-/* --- START --- */
-/* SPLASH PAGE JUMBOTRON */
 
 /* BACKGROUND SLIDESHOW CSS */
 /* --- START --- */
+
+#splash {
+  max-height: 80vh;
+  background-color: var(--bg-color-primary);
+}
+
 .back-full-container {
   display: flex;
   overflow: hidden;
@@ -115,7 +136,7 @@ h6 {
 .sliding-background-up {
   background: repeat-y;
   background-size: auto;
-  opacity: 0.2;
+  opacity: 0.3;
   height: 11013px; /* The image height times 3 */
   max-width: 250px;
   min-width: 250px;
@@ -125,19 +146,16 @@ h6 {
 .sliding-background-down {
   background: repeat-y;
   background-size: auto;
-  opacity: 0.2;
+  opacity: 0.3;
   height: 11013px; /* The image height times 3 */
   max-width: 250px;
   min-width: 250px;
   animation: bgSlideDown 120s linear infinite;
 }
 
-.sliding-background-down:hover {
-  opacity: 1;
-}
-
+.sliding-background-down:hover,
 .sliding-background-up:hover {
-  opacity: 1;
+  opacity: 0.7;
 }
 
 @keyframes bgSlideUp {
@@ -172,19 +190,28 @@ h6 {
 /* OVERRIDE BOOTSTRAP */
 #navbar {
   background-color: transparent;
-  min-height: 8vh;
+  min-height: 10vh;
+}
+
+.list-group {
+  background-color: var(--bg-color-primary);
+  width: 100%;
+}
+
+.list-group-item {
+  background-color: var(--bg-color-primary);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.list-group-item.active {
+  background-color: var(--bg-color-button-selected);
+  border-color: white;
+  border-width: 3px 3px 3px 3px;
 }
 
 #footer {
   background-color: transparent;
   text-align: right;
-}
-
-#splash {
-  max-height: 80vh;
-}
-
-#footer {
   min-height: 8vh;
 }
 

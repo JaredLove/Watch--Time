@@ -4,6 +4,9 @@ import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFilm } from "@fortawesome/free-solid-svg-icons";
+
 import Auth from "../utils/auth";
 
 const AppNavbar = () => {
@@ -12,10 +15,12 @@ const AppNavbar = () => {
 
   return (
     <>
+      {/* {userTheme && require(`../assets/css/themes/${userTheme}.css`)} */}
       <Navbar id="navbar" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand className="navbarBrand " as={Link} to="/">
-            <h4>watchtime</h4>
+            <h3>WATCHTIME</h3>
+            {/* <FontAwesomeIcon icon={faFilm} /> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar">
@@ -32,10 +37,10 @@ const AppNavbar = () => {
                   <Nav.Link as={Link} to="/savedmovies">
                     See Your Movies
                   </Nav.Link>
-                  <Nav.Link as={Link} to='/trailers'>
-                  Trailers
+                  <Nav.Link as={Link} to="/trailers">
+                    Trailers
                   </Nav.Link>
-                  
+
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (

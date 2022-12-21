@@ -50,7 +50,7 @@ function Splash() {
         <div className="jumbo-center">
           <div className="jumbo-content">
             <h1 className="fs-2">WATCHTIME</h1>
-            <p className="fs-4">Your movie bucket lists</p>
+            <p className="fs-4 pl-2">Your movie bucket lists</p>
           </div>
         </div>
       </div>

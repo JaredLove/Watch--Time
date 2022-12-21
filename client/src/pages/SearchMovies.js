@@ -42,10 +42,9 @@ const SearchMovies = () => {
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
-      
-      const  { results }   = await response.json();
 
-      
+      const { results } = await response.json();
+
       const movieData = results.map((movie) => ({
         movieId: movie.id,
         title: movie.title,
@@ -94,7 +93,7 @@ const SearchMovies = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Search for Movies!</h1>
+          <h6>Search for Movies!</h6>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
