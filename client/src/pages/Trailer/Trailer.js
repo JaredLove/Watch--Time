@@ -1,4 +1,4 @@
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import React from "react"
 import axios from 'axios'
 import Movie from "../../components/Movie"
@@ -19,7 +19,9 @@ function Test() {
     const [movie, setMovie] = useState({title: "Loading Movies"})
 
  
-
+    useEffect(() => {
+        fetchMovies()
+    }, [])
     const fetchMovies = async (event) => {
         if (event) {
             event.preventDefault()
