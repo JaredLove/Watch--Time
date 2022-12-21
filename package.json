@@ -23,10 +23,8 @@
   "bugs": {
     "url": "https://github.com/JaredLove/Watch--Time/issues"
   },
-  "devDependencies": {
-    "concurrently": "^7.6.0"
-  },
   "dependencies": {
+    "concurrently": "^7.6.0",
     "if-env": "^1.0.4"
   }
 }
