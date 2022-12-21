@@ -1,9 +1,13 @@
 // import the gql tagged template function
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 // create our typeDefs
 const typeDefs = gql`
-  
+  type Query {
+    me: User
+    users: [User]
+    user(username: String!): User
+  }
   type User {
     _id: ID
     username: String
@@ -12,32 +16,30 @@ const typeDefs = gql`
     savedMovies: [Movie]
   }
   type Movie {
-    movieId: String
+    movieId: Int
     description: String
     title: String
     image: String
+    release: String
+    
   }
   input MovieInput {
-    movieId: String 
+    movieId: Int 
     description: String
     title: String
     image: String
-    }
+    release: String
+    
+  }
   type Auth {
     token: ID!
     user: User
   }
-  type Query {
-    me: User
-    users: [User]
-    user(username: String!): User
-  }
-  
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveMovie(movie: MovieInput): User
-    removeMovie(movieId: String!): User
+    removeMovie(movieId: Int!): User
   }
 `;
 
