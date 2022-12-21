@@ -7,16 +7,16 @@ import Auth from '../utils/auth';
 import { searchMovies } from '../utils/API';
 import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
 
-const SearchBooks = () => {
+const SearchMovies = () => {
   // create state for holding returned google api data
   const [searchedMovies, setSearchedMovies] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
-  // create state to hold saved bookId values
+  // create state to hold saved movieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+  // set up useEffect hook to save `savedMovieIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
 
   const [saveMovie, { error }] = useMutation(SAVE_MOVIE);
@@ -25,7 +25,7 @@ const SearchBooks = () => {
     return () => saveMovieIds(savedMovieIds);
   });
 
-  // create method to search for books and set state on form submit
+  // create method to search for movies and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -58,9 +58,9 @@ const SearchBooks = () => {
     }
   };
 
-  // create function to handle saving a book to our database
+  // create function to handle saving a moive to our database
   const handleSaveMovie = async (movieId) => {
-    // find the book in `searchedBooks` state by the matching id
+    // find the movie in `searchedMovies` state by the matching id
     const movieToSave = searchedMovies.find((movie) => movie.movieId === movieId);
 
     // get token
@@ -74,7 +74,7 @@ const SearchBooks = () => {
        await saveMovie({
         variables: { movie: { ...movieToSave } },
       });
-      // if book successfully saves to user's account, save book id to state
+      // if movie successfully saves to user's account, save movie id to state
       setSavedMovieIds([...savedMovieIds, movieToSave.movieId]);
     } catch (err) {
       console.error(err);
@@ -85,7 +85,7 @@ const SearchBooks = () => {
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Search for Books!</h1>
+          <h1>Search for Moviess!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -95,7 +95,7 @@ const SearchBooks = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Search for a book'
+                  placeholder='Search for a movie'
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -112,7 +112,7 @@ const SearchBooks = () => {
         <h2>
           {searchedMovies.length
             ? `Viewing ${searchedMovies.length} results:`
-            : 'Search for a book to begin'}
+            : 'Search for a movie to begin'}
         </h2>
         <CardColumns>
           {searchedMovies.map((movie) => {
@@ -145,4 +145,4 @@ const SearchBooks = () => {
   );
 };
 
-export default SearchBooks;
+export default SearchMovies;
