@@ -50,12 +50,12 @@ h6 {
 }
 
 /*  --- NAVBAR --- */
-.navbar,
+/* .navbar,
 .navbar-light .navbar-brand,
 #navbar-container {
   background-color: var(--bg-color-primary);
   color: var(--text-primary);
-}
+} */
 
 /* SPLASH PAGE JUMBOTRON */
 /* --- START --- */
@@ -159,9 +159,20 @@ h6 {
 
 /* OVERRIDE BOOTSTRAP */
 #navbar-container {
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: var(--bg-color-primary-50);
   min-height: 10vh;
   /* box-shadow: 0px 20px 15px 10px rgba(255, 255, 255, 1); */
+}
+
+#navbar-container .nav-link,
+#navbar-container .navbar-text {
+  color: rgba(255, 255, 255, 1);
+}
+
+#navbar-container .container a:hover {
+  background-color: var(--bg-color-primary-70);
+  border-radius: 8px;
 }
 
 .list-group {

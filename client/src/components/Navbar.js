@@ -9,6 +9,11 @@ import LoginForm from "./LoginForm";
 
 import Auth from "../utils/auth";
 
+// use this to decode a token and get the user's information out of it
+import decode from "jwt-decode";
+
+const { data } = decode(localStorage.getItem("id_token"));
+
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
@@ -16,40 +21,46 @@ const AppNavbar = () => {
   return (
     <>
       {/* {userTheme && require(`../assets/css/themes/${userTheme}.css`)} */}
-      <Navbar id="navbar-container" variant="dark" expand="lg">
+      <Navbar id="navbar-container" variant="dark" expand="lg" sticky="top">
         <Container fluid>
           <Navbar.Brand className="navbarBrand " as={Link} to="/">
             <h3>WATCHTIME</h3>
             {/* <FontAwesomeIcon icon={faFilm} /> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
-          <Navbar.Collapse id="navbar">
-            <Nav className="ml-auto">
-              {/* if user is logged in show saved movies and logout */}
-              {Auth.loggedIn() ? (
-                <>
-                  <Nav.Link as={Link} to="/movies">
-                    Search for Movies
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/actors">
-                    Search for Actors
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/savedmovies">
-                    See Your Movies
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/trailers">
-                    Trailers
-                  </Nav.Link>
-
+          {/* if user is logged in show saved movies and logout */}
+          {Auth.loggedIn() ? (
+            <Container>
+              <Nav.Link as={Link} to="/movies">
+                Search for Movies
+              </Nav.Link>
+              <Nav.Link as={Link} to="/actors">
+                Search for Actors
+              </Nav.Link>
+              <Nav.Link as={Link} to="/savedmovies">
+                See Your Movies
+              </Nav.Link>
+              <Nav.Link as={Link} to="/trailers">
+                Trailers
+              </Nav.Link>
+              <Navbar.Collapse id="navbar">
+                <Nav className="ml-auto">
+                  <Navbar.Text className="px-3">
+                    Hello {data.username}!
+                  </Navbar.Text>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                </>
-              ) : (
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          ) : (
+            <Navbar.Collapse id="navbar">
+              <Nav className="ml-auto">
                 <Nav.Link onClick={() => setShowModal(true)}>
                   Login/Sign Up
                 </Nav.Link>
-              )}
-            </Nav>
-          </Navbar.Collapse>
+              </Nav>
+            </Navbar.Collapse>
+          )}
         </Container>
       </Navbar>
       {/* set modal data up */}

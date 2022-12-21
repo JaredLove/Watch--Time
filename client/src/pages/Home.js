@@ -9,7 +9,7 @@ import SavedMovies from "./SavedMovies";
 
 // import { GET_ME } from "../utils/queries";
 
-// import Auth from "../utils/auth";
+import Auth from "../utils/auth";
 
 const userData = {
   defaultListId: {
@@ -83,6 +83,7 @@ function Home() {
     }
   };
 
+  console.log("2 - ", Auth.AuthService);
   return (
     <Container>
       <Row>

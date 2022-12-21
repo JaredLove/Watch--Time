@@ -12,23 +12,49 @@
 [data-theme="pink"] {
   /* color pallete 2 - neon pink */
   --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(255, 158, 241, 0.9);
+  --bg-color-secondary: rgb(255, 101, 201);
   --text-primary: #f5f3f4;
   --text-secondary: #161a1dff;
+  --bg-color-primary-50: #181c1f7e;
+  --bg-color-primary-70: #181c1fae;
 }
 
 [data-theme="purple"] {
   /* color pallete - neon purple */
   --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(128, 70, 255, 0.7);
+  --bg-color-secondary: rgba(150, 70, 255, 0.7);
   --text-primary: #f5f3f4;
   --text-secondary: #161a1dff;
+  --bg-color-primary-50: #181c1f7e;
+  --bg-color-primary-70: #181c1fae;
 }
 
 [data-theme="blue"] {
   /* color pallete 4 - neon blue */
   --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(48, 127, 255, 0.7);
+  --bg-color-secondary: rgba(48, 165, 255, 0.7);
   --text-primary: #f5f3f4;
   --text-secondary: #161a1dff;
+  --bg-color-primary-50: #181c1f7e;
+  --bg-color-primary-70: #181c1fae;
+}
+
+[data-theme="green"] {
+  /* color pallete 4 - neon blue */
+  --bg-color-primary: #161a1d;
+  --bg-color-secondary: rgba(48, 255, 114, 0.7);
+  --text-primary: #f5f3f4;
+  --text-secondary: #161a1dff;
+  --bg-color-primary-50: #181c1f7e;
+  --bg-color-primary-70: #181c1fae;
+}
+
+[data-theme="yellow"] {
+  /* color pallete 4 - neon blue */
+  --bg-color-primary: #161a1d;
+  --bg-color-secondary: rgba(255, 248, 59, 0.7);
+  --text-primary: #f5f3f4;
+  --text-secondary: #161a1dff;
+  --bg-color-primary-50: #181c1f7e;
+  --bg-color-primary-70: #181c1fae;
 }
