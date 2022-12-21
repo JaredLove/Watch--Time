@@ -11,10 +11,12 @@ export const LOGIN_USER = gql`
         email
         movieCount
         savedMovies {
-        movieId
-        description
-        title
-        image
+          movieId 
+          description
+          title
+          image
+          release
+          
         
         
       }
@@ -33,10 +35,12 @@ export const ADD_USER = gql`
         email
         movieCount
         savedMovies {
-        movieId
-        description
-        title 
-        image
+          movieId 
+          description
+          title
+          image
+          release
+          
         
         
       }
@@ -51,12 +55,12 @@ export const SAVE_MOVIE = gql`
       _id
       username
       email
-      movieCount
       savedMovies {
-        movieId
+        movieId 
         description
         title
         image
+        release
         
         
       }
@@ -66,7 +70,7 @@ export const SAVE_MOVIE = gql`
 
 // query for remove movie from saved
 export const REMOVE_MOVIE = gql`
-  mutation removeMovie($movieId: String!) {
+  mutation removeMovie($movieId: Int!) {
     removeMovie(movieId: $movieId) {
       _id
       username
@@ -77,6 +81,7 @@ export const REMOVE_MOVIE = gql`
         description
         title
         image
+        release
         
        
       }

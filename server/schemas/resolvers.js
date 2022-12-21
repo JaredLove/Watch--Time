@@ -1,30 +1,29 @@
 // importing Authentication error from apollo servers to show the error message
-const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password".populate("savedMovies")
+          '-__v -password'
         );
         console.log(userData);
 
         return userData;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
+    },
+    users: async () => {
+      return User.find().select("-__v -password");
     },
 
-    users: async () => {
-      return User.find().select("-__v -password").populate("savedMovies");
-    },
+    // get a user by username
     user: async (parent, { username }) => {
-      return User.findOne({ username })
-        .select("-__v -password")
-        .populate("savedMovies");
+      return User.findOne({ username }).select("-__v -password");
     },
   },
 
@@ -34,13 +33,13 @@ const resolvers = {
       // checking if user exists with email and credentials
       if (!user) {
         // if not throw an error
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -60,10 +59,10 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { savedMovies: args.movie } },
           { new: true }
-        ).populate("savedMovies");
+        );
         return updatedUser;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
     removeMovie: async (parent, args, context) => {
       if (context.user) {
@@ -74,7 +73,7 @@ const resolvers = {
         );
         return updatedUser;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

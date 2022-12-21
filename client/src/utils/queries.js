@@ -9,10 +9,12 @@ export const GET_ME = gql`
       email
       movieCount
       savedMovies {
-        movieId
+        movieId 
         description
-        title  
+        title
         image
+        release
+        
       }
     }
   }
@@ -26,12 +28,32 @@ export const QUERY_USER = gql`
       email
       movieCount
       savedMovies {
-        movieId
+        movieId 
         description
-        title  
+        title
         image
+        release
+        
       }
     }
   }
 `;
+
+
+export const QUERY_MOVIES = gql`
+        
+        query movies{
+          me {
+            _id
+          
+          savedMovies {
+            movieId 
+            description
+            title
+            image
+            release
+            
+          }
+        }
+        }`
 
