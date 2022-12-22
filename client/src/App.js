@@ -14,7 +14,7 @@ import Navbar from "./components/Navbar";
 import SearchMovies from "./pages/SearchMovies";
 import SearchActors from "./pages/SearchActors";
 import SavedMovies from "./pages/SavedMovies";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import Trailer from "./pages/Trailer/Trailer";
 import Splash from "./pages/Splash";
 import Footer from "./pages/Footer";
@@ -53,13 +53,13 @@ function App() {
           <Navbar userTheme={userTheme} setUserTheme={setUserTheme} />
           <Switch>
             {loggedIn ? (
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Trailer} />
             ) : (
               <Route exact path="/" component={Splash} />
             )}
             <Route exact path="/movies" component={SearchMovies} />
             <Route exact path="/actors" component={SearchActors} />
-            <Route exact path="/trailers" component={Trailer} />
+
             <Route exact path="/savedmovies" component={SavedMovies} />
 
             <Route

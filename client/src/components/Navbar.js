@@ -17,9 +17,10 @@ import LoginForm from "./LoginForm";
 import Auth from "../utils/auth";
 
 // use this to decode a token and get the user's information out of it
-import decode from "jwt-decode";
+// import decode from "jwt-decode";
 
-const { data } = decode(localStorage.getItem("id_token"));
+// const loggedIn = Auth.loggedIn();
+
 // const { data } = { username: "" };
 
 // import { useQuery } from '@apollo/client';
@@ -45,6 +46,9 @@ const AppNavbar = ({ userTheme, setUserTheme }) => {
           {Auth.loggedIn() ? (
             <Navbar.Collapse id="navbar">
               <Nav className="ml-auto">
+                <Nav.Link as={Link} to="/" className="navhover">
+                  Home
+                </Nav.Link>
                 <Nav.Link as={Link} to="/movies" className="navhover mx-2">
                   Search for Movies
                 </Nav.Link>
@@ -54,13 +58,10 @@ const AppNavbar = ({ userTheme, setUserTheme }) => {
                 <Nav.Link as={Link} to="/savedmovies" className="navhover">
                   See Your Movies
                 </Nav.Link>
-                <Nav.Link as={Link} to="/trailers" className="navhover">
-                  Trailers
-                </Nav.Link>
               </Nav>
               <Nav className="ml-auto">
                 <NavDropdown
-                  title={`Hello ${data.username}`}
+                  title={`Settings`}
                   id="basic-nav-dropdown"
                   drop="left"
                   className="btn btn-dark btn-sm"
@@ -96,6 +97,20 @@ const AppNavbar = ({ userTheme, setUserTheme }) => {
                     }}
                   >
                     The Blues Brothers
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={(e) => {
+                      setUserTheme(`green`);
+                    }}
+                  >
+                    Hulk Green
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={(e) => {
+                      setUserTheme(`yellow`);
+                    }}
+                  >
+                    Bumblebee Yellow
                   </NavDropdown.Item>
                   <NavDropdown.Divider className="mt-4" />
                   <NavDropdown.Item onClick={Auth.logout}>
