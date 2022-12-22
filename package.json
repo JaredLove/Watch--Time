@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "16.15.0"
-   
+    "node": "16.17.0"
   },
   "scripts": {
-    "start": "npm run Prod || npm run develop",
+    "start": "if-env NODE_ENV=production && npm run Prod || npm run develop",
     "Prod": "cd server && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
@@ -24,8 +23,8 @@
   "bugs": {
     "url": "https://github.com/JaredLove/Watch--Time/issues"
   },
-
-  "devDependencies": {
-    "concurrently": "^7.6.0"
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "if-env": "^1.0.4"
   }
 }
