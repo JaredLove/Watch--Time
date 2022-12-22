@@ -1,45 +1,3 @@
-:root {
-  /* color pallete 1 - crimson */
-  /* --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(102, 7, 9, 0.7);
-  --bg-color-button: #b1a7a6ff;
-  --bg-color-button-selected: rgba(102, 7, 9, 0.7);
-  --bg-color-button-highlighted: rgba(102, 7, 9, 0.7);
-  --text-primary: #f5f3f4;
-  --text-secondary: #161a1dff; */
-
-  /* color pallete 2 - neon pink */
-  /* --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(255, 158, 241, 0.9);
-  --text-primary: #f5f3f4;
-  --text-secondary: #161a1dff; */
-
-  /* color pallete 3 - neon purple */
-  /* --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(128, 70, 255, 0.7);
-  --text-primary: #f5f3f4;
-  --text-secondary: #161a1dff; */
-
-  /* color pallete 4 - neon blue */
-  /* --bg-color-primary: #161a1d;
-  --bg-color-secondary: rgba(48, 127, 255, 0.7);
-  --text-primary: #f5f3f4;
-  --text-secondary: #161a1dff; */
-
-  /* coolers url and original names
-  https://coolors.co/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff */
-  /* --rich-black-fogra-39: #0b090aff;
-  --eerie-black: #161a1dff;
-  --blood-red: #660708ff;
-  --ruby-red: #a4161aff;
-  --carnelian: #ba181bff;
-  --imperial-red: #e5383bff;
-  --black-shadows: #b1a7a6ff;
-  --light-gray: #d3d3d3ff;
-  --cultured: #f5f3f4ff;
-  --white: #ffffffff; */
-}
-
 body {
   font-family: "Rubik", sans-serif;
   background-color: var(--bg-color-primary);
@@ -60,6 +18,16 @@ h6 {
   background-image: linear-gradient(
     90deg,
     var(--bg-color-primary),
+    var(--bg-color-secondary),
+    var(--bg-color-primary),
+    var(--bg-color-secondary),
+    var(--bg-color-primary),
+    var(--bg-color-secondary),
+    var(--bg-color-primary),
+    var(--bg-color-secondary),
+    var(--bg-color-primary),
+    var(--bg-color-secondary),
+    var(--bg-color-primary),
     var(--bg-color-secondary)
   );
 }
@@ -70,6 +38,7 @@ h6 {
 }
 
 /* --- UTILITY --- */
+
 .text-bold {
   font-weight: bold;
 }
@@ -81,11 +50,12 @@ h6 {
 }
 
 /*  --- NAVBAR --- */
-.navbar,
-.navbar-light .navbar-brand {
+/* .navbar,
+.navbar-light .navbar-brand,
+#navbar-container {
   background-color: var(--bg-color-primary);
   color: var(--text-primary);
-}
+} */
 
 /* SPLASH PAGE JUMBOTRON */
 /* --- START --- */
@@ -188,31 +158,76 @@ h6 {
 /* END MODAL */
 
 /* OVERRIDE BOOTSTRAP */
-#navbar {
-  background-color: transparent;
+#navbar-container {
+  background-color: var(--bg-color-primary-50);
   min-height: 10vh;
+  /* box-shadow: 0px 20px 15px 10px rgba(255, 255, 255, 1); */
+}
+
+#navbar-container .dropdown-menu {
+  background-color: var(--bg-color-primary);
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgb(67, 67, 67);
+}
+
+#navbar-container .nav-link,
+#navbar-container .navbar-text {
+  color: rgba(255, 255, 255, 1);
+}
+
+#navbar-container a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dropdown-item:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: var(--bg-color-primary);
+}
+#nav-list-title {
+  font-weight: bold;
+}
+
+#navbar-container .navbar-nav .navhover:hover {
+  background-color: var(--bg-color-primary-70);
+  border-radius: 8px;
+}
+
+#navbar-container a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* list group header */
+.list-group-item.disabled,
+.list-group-item:disabled {
+  color: #ffffff;
+  pointer-events: none;
+  background-color: rgb(0, 0, 0);
 }
 
 .list-group {
-  background-color: var(--bg-color-primary);
+  background-color: var(--bg-color-list);
   width: 100%;
 }
 
 .list-group-item {
-  background-color: var(--bg-color-primary);
+  background-color: var(--bg-color-list);
   border: 1px solid rgba(0, 0, 0, 0.125);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .list-group-item.active {
   background-color: var(--bg-color-button-selected);
-  border-color: white;
-  border-width: 3px 3px 3px 3px;
+
+  border-style: none;
 }
 
 #footer {
   background-color: transparent;
   text-align: right;
   min-height: 8vh;
+  /* box-shadow: 0px -20px 15px 10px rgba(255, 255, 255, 1); */
 }
 
 /* media queries */

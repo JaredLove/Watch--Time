@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Container,
+  Modal,
+  Tab,
+  NavDropdown,
+} from "react-bootstrap";
 import SignUpForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 
@@ -8,9 +15,15 @@ import LoginForm from "./LoginForm";
 // import { faFilm } from "@fortawesome/free-solid-svg-icons";
 // import { GET_ME } from '../utils/queries';
 import Auth from "../utils/auth";
-// import { useQuery } from '@apollo/client';
-const AppNavbar = () => {
 
+// use this to decode a token and get the user's information out of it
+import decode from "jwt-decode";
+
+const { data } = decode(localStorage.getItem("id_token"));
+// const { data } = { username: "" };
+
+// import { useQuery } from '@apollo/client';
+const AppNavbar = ({ userTheme, setUserTheme }) => {
   // const { data } = useQuery(GET_ME);
   // const userData = data?.me || {};
   // console.log(userData);
@@ -21,40 +34,83 @@ const AppNavbar = () => {
   return (
     <>
       {/* {userTheme && require(`../assets/css/themes/${userTheme}.css`)} */}
-      <Navbar id="navbar" variant="dark" expand="lg">
+      <Navbar id="navbar-container" variant="dark" expand="lg" sticky="top">
         <Container fluid>
           <Navbar.Brand className="navbarBrand " as={Link} to="/">
             <h3>WATCHTIME</h3>
             {/* <FontAwesomeIcon icon={faFilm} /> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
-          <Navbar.Collapse id="navbar">
-            <Nav className="ml-auto">
-              {/* if user is logged in show saved movies and logout */}
-              {Auth.loggedIn() ? (
-                <>
-                  <Nav.Link as={Link} to="/movies">
-                    Search for Movies
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/actors">
-                    Search for Actors
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/savedmovies">
-                    See Your Movies
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/trailers">
-                    Trailers
-                  </Nav.Link>
-
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                </>
-              ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>
-                  Login/Sign Up
+          {/* if user is logged in show saved movies and logout */}
+          {Auth.loggedIn() ? (
+            <Navbar.Collapse id="navbar">
+              <Nav className="ml-auto">
+                <Nav.Link as={Link} to="/movies" className="navhover mx-2">
+                  Search for Movies
                 </Nav.Link>
-              )}
+                <Nav.Link as={Link} to="/actors" className="navhover">
+                  Search for Actors
+                </Nav.Link>
+                <Nav.Link as={Link} to="/savedmovies" className="navhover">
+                  See Your Movies
+                </Nav.Link>
+                <Nav.Link as={Link} to="/trailers" className="navhover">
+                  Trailers
+                </Nav.Link>
+              </Nav>
+              <Nav className="ml-auto">
+                <NavDropdown
+                  title={`Hello ${data.username}`}
+                  id="basic-nav-dropdown"
+                  drop="left"
+                  className="btn btn-dark btn-sm"
+                >
+                  <NavDropdown.Item id="nav-list-title" disabled>
+                    CHOOSE THEME
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item
+                    onClick={(e) => {
+                      setUserTheme(`red`);
+                    }}
+                  >
+                    Red Dawn
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={(e) => {
+                      setUserTheme(`pink`);
+                    }}
+                  >
+                    Pretty in Pink
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={(e) => {
+                      setUserTheme(`purple`);
+                    }}
+                  >
+                    Purple Rain
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={(e) => {
+                      setUserTheme(`blue`);
+                    }}
+                  >
+                    The Blues Brothers
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider className="mt-4" />
+                  <NavDropdown.Item onClick={Auth.logout}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          ) : (
+            <Nav className="ml-auto">
+              <Nav.Link onClick={() => setShowModal(true)}>
+                Login/Sign Up
+              </Nav.Link>
             </Nav>
-          </Navbar.Collapse>
+          )}
         </Container>
       </Navbar>
       {/* set modal data up */}

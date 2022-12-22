@@ -86,17 +86,15 @@ function Home() {
   return (
     <Container>
       <Row>
+        <Container fluid>TRAILER</Container>
+      </Row>
+
+      <Row>
         <Col md={2}>
           <Row className="pt-2 pb-4">
             {/* <div className="fs-5 text-bold">Your Movie Lists:</div> */}
-            <ListGroup
-              defaultActiveKey={userData.defaultListId.movieListId}
-              variant="flush"
-            >
-              <ListGroup.Item
-                disabled
-                className="px-2 font-weight-bold text-dark"
-              >
+            <ListGroup defaultActiveKey={userData.defaultListId.movieListId}>
+              <ListGroup.Item disabled className="px-2 font-weight-bold">
                 Your Movie Lists:
               </ListGroup.Item>
               {userData.movieLists.length &&

@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 //import last to load custom styles after css framework(s) above
 import "./index.css";
-import "./assets/css/themes/default.css";
+import "./assets/css/themes/index.css";
 
 ReactDOM.render(
   <React.StrictMode>
