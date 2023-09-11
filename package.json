@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "16.17.0"
-  },
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run Prod || npm run develop",
+    "start": "node server/server.js",
     "Prod": "cd server && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
