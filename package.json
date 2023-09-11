@@ -10,6 +10,10 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
   },
+
+  "engines": {
+    "node": "14.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JaredLove/Watch--Time.git"
