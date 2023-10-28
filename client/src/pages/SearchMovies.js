@@ -85,7 +85,7 @@ const SearchMovies = () => {
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Search for Movies!</h1>
+          <h1 className='fs-2'>Search for Movies!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>

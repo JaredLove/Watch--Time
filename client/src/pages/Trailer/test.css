@@ -60,6 +60,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     border: 1px solid gray;
+
 }
 
 .button:hover {
@@ -135,3 +136,71 @@ h1 {
     border: none;
     cursor: pointer;
 }  
+
+
+
+#youtube-player{
+    width: 1000px;
+    height: 600px;
+}
+
+
+
+@media screen and (max-width: 1020px) {
+    .movies {
+        grid-template-columns: 2fr 2fr;
+    }
+
+    .poster {
+        min-height: 400px;
+    }
+
+    .poster-content {
+        width: 30ch;
+        font-size: 10px;
+    }
+    .poster-content h1{
+        font-size: 30px;
+    }
+
+    .movie {
+        font-size: 14px;
+    }
+
+    .movie-voting {
+        font-size: 10px;
+    }
+
+    .movie img {
+        height: 255px;
+    }
+
+    .movie-title {
+        font-size: 14px;
+    }
+
+    .movie-infos {
+        padding: 10px 0;
+    }
+
+    .header {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .header .brand {
+        font-size: 32px;
+    }
+
+    #youtube-player{
+        width: 300px;
+        height: 300px;
+
+    }
+
+
+    
+}

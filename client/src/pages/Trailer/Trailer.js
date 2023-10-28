@@ -84,7 +84,7 @@ function Test() {
   //return data
   return (
     <div className="App">
-      <header className="center-max-size header">
+      <div className="center-max-size header">
         <form className="form" onSubmit={fetchMovies}>
           <input
             className="search"
@@ -96,9 +96,9 @@ function Test() {
             Search
           </button>
         </form>
-      </header>
+      </div>
       {movies.length ? (
-        <main>
+        <section>
           {movie ? (
             <div
               className="poster"
@@ -110,14 +110,14 @@ function Test() {
                 <>
                   <Youtube
                     videoId={trailer.key}
-                    className={"youtube "}
-                    containerClassName={"youtube-container "}
+                    className="youtube"
+                    id="youtube-player"
+                    containerClassName="youtube-container"
+                    style={{marginLeft: "auto",marginRight: "auto",}}
                     opts={{
-                      width: "1000px",
-                      height: "500px",
                       playerVars: {
                         autoplay: 1,
-                        controls: 0,
+                        controls: 1,
                         cc_load_policy: 0,
                         fs: 0,
                         iv_load_policy: 0,
@@ -157,7 +157,7 @@ function Test() {
           ) : null}
 
           <div className={"center-max-size  movies"}>{renderMovies()}</div>
-        </main>
+        </section>
       ) : (
         "No movie was found sorry"
       )}

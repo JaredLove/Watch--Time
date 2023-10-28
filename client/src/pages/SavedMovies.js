@@ -50,7 +50,7 @@ const SavedMovies = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Viewing saved movies!</h1>
+          <h1 className='fs-2'>Viewing saved movies!</h1>
         </Container>
       </Jumbotron>
       <Container>
