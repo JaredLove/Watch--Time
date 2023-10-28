@@ -10,6 +10,8 @@
   --text-secondary: #161a1dff;
   --bg-color-primary-50: #181c1f7e;
   --bg-color-primary-70: #181c1fae;
+  height: 100vh;
+  max-height: 100%;
 }
 
 [data-theme="pink"] {
@@ -23,6 +25,8 @@
   --text-secondary: #161a1dff;
   --bg-color-primary-50: #181c1f7e;
   --bg-color-primary-70: #181c1fae;
+  height: 100vh;
+  max-height: 100%;
 }
 
 [data-theme="purple"] {
@@ -36,6 +40,8 @@
   --text-secondary: #161a1dff;
   --bg-color-primary-50: #181c1f7e;
   --bg-color-primary-70: #181c1fae;
+  height: 100vh;
+  max-height: 100%;
 }
 
 [data-theme="blue"] {
@@ -49,6 +55,8 @@
   --text-secondary: #161a1dff;
   --bg-color-primary-50: #181c1f7e;
   --bg-color-primary-70: #181c1fae;
+  height: 100vh;
+  max-height: 100%;
 }
 
 [data-theme="green"] {
@@ -62,6 +70,8 @@
   --text-secondary: #161a1dff;
   --bg-color-primary-50: #181c1f7e;
   --bg-color-primary-70: #181c1fae;
+  height: 100vh;
+  max-height: 100%;
 }
 
 [data-theme="yellow"] {
@@ -75,4 +85,9 @@
   --text-secondary: #161a1dff;
   --bg-color-primary-50: #181c1f7e;
   --bg-color-primary-70: #181c1fae;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
 }
+
+
